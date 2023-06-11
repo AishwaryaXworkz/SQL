@@ -1,5 +1,5 @@
-CREATE DATABASE BANKS;
-use BANKS;
+CREATE DATABASE ALLBANKS;
+use ALLBANKS;
 
 CREATE TABLE bank_detailes(id int,bank_name varchar(30),branch_name varchar(30),account_no int,branch_no int,account_type varchar(30),ifsc_code bigint,location varchar(30),holders_name varchar(30),holder_ph_no bigint,holder_address varchar(30),holder_email varchar(30),bank_checkbook varchar(30),cards varchar(30),no_of_transcation int);
 select * from bank_detailes;
@@ -26,10 +26,54 @@ INSERT INTO bank_detailes VALUES(19,'central bank of india','ESI',906445,190,'pr
 INSERT INTO bank_detailes VALUES(20,'allahabad bank','rammandir',2563140,200,'loan account',947747567,'dakshina kannada','pavan',969985862295,'arekere','pavan@gmail.com','allahabad bankcheckbook','travel cards',36);
 SELECT * FROM bank_detailes;
 
-SELECT * from bank_detailes where id=5;
-SELECT * from bank_detailes where branch_name='rammandir';
-SELECT * from bank_detailes where location='vijayapura';
-SELECT * from bank_detailes where holders_name='aithi';
-SELECT * from bank_detailes where cards='yatra';
+UPDATE bank_detailes SET bank_name ='state bank of india' WHERE id=1;
+UPDATE bank_detailes SET account_type='CHEQUE' WHERE id=4;
+UPDATE bank_detailes SET branch_no =700 , bank_name ='UNION' WHERE id=7;
+UPDATE bank_detailes SET holders_name='dhanjay' WHERE id=15;
+UPDATE bank_detailes SET ifsc_code=903672335 WHERE id=18;
 
-SELECT ifsc_code,location,branch_name,holder_email,cards from bank_detailes;
+UPDATE bank_detailes SET ifsc_code=7985943855 WHERE bank_name='indusland' AND id=11;
+UPDATE bank_detailes SET cards='AIR INDIA' WHERE account_no=888888 AND id=9;
+UPDATE bank_detailes SET branch_name='MAHALAKSHMI' WHERE holder_address='ashok nagar' AND id=10;
+
+UPDATE bank_detailes SET account_no=122112 WHERE bank_name='ICICI' OR id=5;
+UPDATE bank_detailes SET holder_ph_no=6361825711 WHERE location='hospet' OR id=1;
+UPDATE bank_detailes SET cards='COMMERECIAL' WHERE holder_email='chintu@gmail.com' OR id=19;
+SELECT * FROM bank_detailes;
+
+
+DELETE FROM bank_detailes WHERE id=16;
+DELETE FROM bank_detailes WHERE location='hassan'; 
+DELETE FROM bank_detailes WHERE holders_name='firdose';  
+
+SELECT * FROM bank_detailes WHERE bank_name='UCO bank' AND id=13;
+SELECT * FROM bank_detailes WHERE branch_name='rajajinagar' AND id=5;
+SELECT * FROM bank_detailes WHERE location='koppal' AND id=18;
+SELECT * FROM bank_detailes WHERE ifsc_code=452656367 AND id=15;
+SELECT * FROM bank_detailes WHERE holders_name='ash' AND id=14;
+
+SELECT * FROM bank_detailes WHERE id=1 OR id=3 OR id=5;
+SELECT * FROM bank_detailes WHERE id=12 OR id=8 OR id=17;
+SELECT * FROM bank_detailes WHERE id=7 OR id=20 OR id=18;
+SELECT * FROM bank_detailes WHERE id=16 OR id=1 OR id=2;
+SELECT * FROM bank_detailes WHERE id=14 OR id=20 OR id=4;
+
+SELECT * FROM bank_detailes WHERE id IN(1,4,7,9);
+SELECT * FROM bank_detailes WHERE bank_name IN('BOB','canara Bank','ICICI');
+SELECT * FROM bank_detailes WHERE location IN('hampi','belgaum','vijayapura','raichur');
+SELECT * FROM bank_detailes WHERE cards IN('travel cards','yatra','AIR INDIA');
+SELECT * FROM bank_detailes WHERE no_of_transcation IN(25,30,4,1);
+SELECT * from bank_detailes;
+
+SELECT * FROM bank_detailes WHERE id NOT IN(1,4,7,9);
+SELECT * FROM bank_detailes WHERE bank_name NOT IN('BOB','canara Bank','ICICI');
+SELECT * FROM bank_detailes WHERE  location NOT IN('hampi','belgaum','vijayapura','raichur');
+SELECT * FROM bank_detailes WHERE cards NOT IN('travel cards','yatra','AIR INDIA');
+SELECT * FROM bank_detailes WHERE no_of_transcation NOT IN(25,30,4,1);
+
+SELECT * FROM bank_detailes WHERE id BETWEEN 1 and 10;
+SELECT * FROM bank_detailes WHERE branch_no BETWEEN 10 and 50;
+SELECT * FROM bank_detailes WHERE id BETWEEN 11 and 20;
+SELECT * FROM bank_detailes WHERE no_of_transcation BETWEEN 2 and 25;
+SELECT * FROM bank_detailes WHERE id BETWEEN 8 and 15;
+SELECT * from bank_detailes;
