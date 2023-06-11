@@ -1,5 +1,5 @@
-CREATE DATABASE allstates;
-use allstates;
+CREATE DATABASE newstates;
+use newstates;
 
 CREATE TABLE st_information1(id int,st_name varchar(30),st_pincode int ,st_population bigint,st_capital varchar(30),st_rivers varchar(30),st_economy varchar(30),no_of_dist varchar(30),dist_name varchar(30),lok_sabha_constituencies int,st_areas bigint,pre_cap_income bigint,st_forest varchar(30),st_argicultural_area varchar(30),st_cm_name varchar(30));
 select * from st_information1;
@@ -26,51 +26,58 @@ INSERT INTO st_information1 VALUES(19,'odisha',560077,1900000,'Bhubaneshwar','Sa
 INSERT INTO st_information1 VALUES(20,'TamilNadu',560088,2500000,'Chennai','kalinadi','seventyfive hundred crore','twohundred','uttara kannada',20,2000,1600000,'BM kaval aagara forest','11500sqkm','mamata banerjee');
 select * from st_information1;
 
-UPDATE st_information1 SET st_name ='PONDICHERY' WHERE id=7;
-UPDATE st_information1 SET st_rivers='TAPI' WHERE id=11;
-UPDATE st_information1 SET st_pincode =560026 , st_name ='DELHI' WHERE id=1;
-UPDATE  st_information1 SET st_forest='bannerghatta' WHERE id=15;
-UPDATE st_information1 SET st_areas=25700 WHERE id=1;
 
-UPDATE st_information1 SET st_pincode=560096 WHERE st_name='Bihar' AND id=5;
-UPDATE st_information1 SET st_areas=7000000 WHERE st_rivers='Sabari' AND id=9;
-UPDATE st_information1 SET dist_name='bengaluru rural' WHERE st_cm_name='siddaramaiah' AND id=1;
+/*order by*/
+SELECT * from st_information1 ORDER BY id=1;
+SELECT * from st_information1 ORDER BY  id desc;
 
-UPDATE st_information1 SET st_pincode=560090 WHERE st_name='Bihar' OR id=5;
-UPDATE st_information1 SET st_areas=600000000 WHERE st_rivers='Sabari' OR id=9;
-UPDATE st_information1 SET dist_name='bengaluru urban' WHERE st_cm_name='siddaramaiah' OR id=1;
+/*distinct*/
+SELECT distinct(st_capital)from st_information1;
 
-DELETE FROM st_information1 WHERE id=16;
-DELETE FROM st_information1 WHERE no_of_dist='eighty'; 
-DELETE FROM st_information1 WHERE st_forest='hennur';  
+/*Aggergate functions*/
+SELECT COUNT(*) FROM st_information1;
+SELECT COUNT(st_population) FROM st_information1;
+SELECT COUNT(dist_name) FROM st_information1;
+SELECT COUNT(lok_sabha_constituencies) FROM st_information1;
+SELECT COUNT(st_areas)  FROM st_information1;
 
-SELECT * FROM st_information1 WHERE st_name='DELHI' AND id=1;
-SELECT * FROM st_information1 WHERE st_rivers='TAPI' AND id=21;
-SELECT * FROM st_information1 WHERE st_areas='700' AND id=7;
-SELECT * FROM st_information1 WHERE pre_cap_income=500000 AND id=10;
-SELECT * FROM st_information1 WHERE st_economy='sixtyfive hundred crore' AND id=19;
+SELECT SUM(st_population) FROM st_information1;
+SELECT SUM(pre_cap_income) FROM st_information1;
+SELECT SUM(lok_sabha_constituencies) FROM st_information1;
+SELECT SUM(st_areas) FROM st_information1;
+SELECT SUM(st_pincode) FROM st_information1;
 
-SELECT * FROM st_information1 WHERE id=1 OR id=3 OR id=5;
-SELECT * FROM st_information1 WHERE id=12 OR id=8 OR id=17;
-SELECT * FROM st_information1 WHERE id=7 OR id=20 OR id=18;
-SELECT * FROM st_information1 WHERE id=16 OR id=1 OR id=2;
-SELECT * FROM st_information1 WHERE id=14 OR id=20 OR id=4;
+SELECT MAX(st_population) FROM st_information1;
+SELECT MAX(pre_cap_income) FROM st_information1;
+SELECT MAX(lok_sabha_constituencies) FROM st_information1;
+SELECT MAX(st_areas) FROM st_information1;
+SELECT MAX(st_pincode) FROM st_information1;
 
-SELECT * FROM st_information1 WHERE id IN(1,4,7,9);
-SELECT * FROM st_information1 WHERE st_name IN('DELHI','Jharkhand','odisha');
-SELECT * FROM st_information1 WHERE lok_sabha_constituencies IN(19,13,10,20);
-SELECT * FROM st_information1 WHERE st_forest IN('BU forest','avalahalli','BM kaval aagara forest');
-SELECT * FROM st_information1 WHERE dist_name IN('kolar','davanagere','ballari');
+SELECT MIN(st_population) FROM st_information1;
+SELECT MIN(pre_cap_income) FROM st_information1;
+SELECT MIN(lok_sabha_constituencies) FROM st_information1;
+SELECT MIN(st_areas) FROM st_information1;
+SELECT MIN(st_pincode) FROM st_information1;
 
-SELECT * FROM st_information1 WHERE id NOT IN(1,4,7,9);
-SELECT * FROM st_information1 WHERE st_name NOT IN('DELHI','Jharkhand','odisha');
-SELECT * FROM st_information1 WHERE lok_sabha_constituencies NOT IN(19,13,10,20);
-SELECT * FROM st_information1 WHERE st_forest NOT IN('BU forest','avalahalli','BM kaval aagara forest');
-SELECT * FROM st_information1 WHERE dist_name NOT IN('kolar','davanagere','ballari');
 
-SELECT * FROM st_information1 WHERE id BETWEEN 1 and 10;
-SELECT * FROM st_information1 WHERE st_areas BETWEEN 1300 and 2000;
-SELECT * FROM st_information1 WHERE id BETWEEN 11 and 20;
-SELECT * FROM st_information1 WHERE st_areas BETWEEN 400 and 1000;
-SELECT * FROM st_information1 WHERE id BETWEEN 8 and 15;
-SELECT * from st_information1;
+SELECT AVG(st_population) FROM st_information1;
+SELECT AVG(pre_cap_income) FROM st_information1;
+SELECT AVG(lok_sabha_constituencies) FROM st_information1;
+SELECT AVG(st_areas) FROM st_information1;
+SELECT AVG(st_pincode) FROM st_information1;
+
+
+
+/*INSTR*/
+SELECT INSTR('XWORKZ','K');
+SELECT INSTR(st_name,'A') from  st_information1;
+SELECT INSTR(st_capital,'S') from  st_information1;
+SELECT INSTR(st_rivers,'G') from  st_information1;
+SELECT * FROM  st_information1;
+
+/*SUBSTR*/
+SELECT substr('XWORKZODC',4,3);
+SELECT substr('XWORKZODC',4,7);
+SELECT substr(st_name,4,7) from st_information1;
+SELECT substr(st_capital,2,7) from st_information1;
+SELECT substr(st_rivers,3,8) from  st_information1;

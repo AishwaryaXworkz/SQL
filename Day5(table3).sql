@@ -1,5 +1,5 @@
-CREATE DATABASE allwatches;
-use allwatches;
+CREATE DATABASE regularwatches;
+use regularwatches;
 
 CREATE TABLE watches(watch_id int,watch_color varchar(30),watch_brandname varchar(30),watch_price int,watch_type varchar(30),watch_warranty varchar(30),watch_display varchar(30),watch_features varchar(30),watch_power varchar(30),watch_dialstyle int,watch_EMI int,watch_strapstyle varchar(30),watch_model_size int,watch_dial_material varchar(30),watch_movement_type varchar(30));
 SELECT * FROM watches;
@@ -26,56 +26,54 @@ INSERT INTO watches VALUES(19,'cyan','piaget',1900,'quartz','nineteen yrs','swor
 INSERT INTO watches VALUES(20,'burgundy','rogerdubusis',2000,'dive','twenty yrs','syringe','automatic','sixtyone percent',52,32,'nylon pleced',81,'normal phase','solar power');
 SELECT * FROM watches;
 
+/*Aggergate functions*/
+SELECT COUNT(*) FROM watches;
+SELECT COUNT(watch_price) FROM watches;
+SELECT COUNT(watch_dialstyle) FROM watches;
+SELECT COUNT(watch_EMI) FROM watches;
+SELECT COUNT(watch_model_size)  FROM watches;
 
-UPDATE watches SET watch_brandname ='TIMEX' WHERE watch_id=3;
-UPDATE watches SET watch_type='FIELD' WHERE watch_id=5;
-UPDATE watches SET watch_features='NOTIFICATION' , watch_warranty ='SEVEN YRS' WHERE watch_id=7;
-UPDATE watches SET watch_strapstyle='NYLON PLECED' WHERE watch_id=20;
-UPDATE watches SET watch_EMI=48 WHERE watch_id=16;
-
-UPDATE watches SET watch_price=28000 WHERE watch_color='pink' AND watch_id=15;
-UPDATE watches SET watch_display='GPS' WHERE watch_type='nurse' AND watch_id=11;
-UPDATE watches SET watch_strapstyle='ZULU' WHERE watch_dialstyle=43 AND watch_dial_material='small seconds';
-
-UPDATE watches SET watch_color='GRAY' WHERE watch_price=800 OR watch_id=21;
-UPDATE watches SET watch_brandname='RADO' WHERE watch_features='heartrate' OR watch_id=12;
-UPDATE watches SET watch_dial_material='MIXED' WHERE watch_power='hundred percent' OR watch_id=10;
-SELECT * FROM watches;
+SELECT SUM(watch_id) FROM watches;
+SELECT SUM(watch_price) FROM watches;
+SELECT SUM(watch_dialstyle) FROM watches;
+SELECT SUM(watch_EMI) FROM watches;
+SELECT SUM(watch_model_size)  FROM watches;
 
 
-DELETE FROM watches WHERE watch_id=10;
-DELETE FROM watches WHERE watch_strapstyle='canvas'; 
-DELETE FROM watches WHERE watch_power='fiftytwo percent';  
-
-SELECT * FROM watches WHERE watch_color='mustard' AND watch_id=13;
-SELECT * FROM watches WHERE watch_brandname='giordano' AND watch_id=5;
-SELECT * FROM watches WHERE watch_features='watch faces' AND watch_id=18;
-SELECT * FROM watches WHERE watch_type='retro' AND watch_id=15;
-SELECT * FROM watches WHERE watch_power='fiftyfour percent' AND watch_id=14;
-
-SELECT * FROM watches WHERE watch_id=1 OR watch_id=3 OR watch_id=5;
-SELECT * FROM watches WHERE watch_id=12 OR watch_id=8 OR watch_id=17;
-SELECT * FROM watches WHERE watch_id=7 OR watch_id=20 OR watch_id=18;
-SELECT * FROM watches WHERE watch_id=16 OR watch_id=1 OR watch_id=2;
-SELECT * FROM watches WHERE watch_id=14 OR watch_id=20 OR watch_id=4;
-
-SELECT * FROM watches WHERE watch_id IN(1,4,7,9);
-SELECT * FROM watches WHERE watch_color IN('purple','black','yellow');
-SELECT * FROM watches WHERE watch_brandname IN('ck watch','maxima','bulgari','titan');
-SELECT * FROM watches WHERE watch_warranty IN('two yrs','six yrs','one yrs');
-SELECT * FROM watches WHERE watch_EMI IN(15,16,14,11);
-SELECT * from watches;
-
-SELECT * FROM watches WHERE watch_id NOT IN(1,4,7,9);
-SELECT * FROM watches WHERE watch_color NOT IN('purple','black','yellow');
-SELECT * FROM watches WHERE watch_brandname NOT IN('ck watch','maxima','bulgari','titan');
-SELECT * FROM watches WHERE watch_warranty NOT IN('two yrs','six yrs','one yrs');
-SELECT * FROM watches WHERE watch_EMI NOT IN(15,16,14,11);
+SELECT MAX(watch_id) FROM watches;
+SELECT MAX(watch_price) FROM watches;
+SELECT MAX(watch_dialstyle) FROM watches;
+SELECT MAX(watch_EMI) FROM watches;
+SELECT MAX(watch_model_size)  FROM watches;
 
 
-SELECT * FROM watches WHERE watch_id BETWEEN 1 and 10;
-SELECT * FROM watches WHERE  watch_EMI BETWEEN 12 and 17;
-SELECT * FROM watches WHERE watch_id BETWEEN 11 and 20;
-SELECT * FROM watches WHERE watch_price BETWEEN 600 and 900;
-SELECT * FROM watches WHERE watch_id BETWEEN 8 and 15;
-SELECT * from watches;
+SELECT MIN(watch_id) FROM watches;
+SELECT MIN(watch_price) FROM watches;
+SELECT MIN(watch_dialstyle) FROM watches;
+SELECT MIN(watch_EMI) FROM watches;
+SELECT MIN(watch_model_size)  FROM watches;
+
+SELECT AVG(watch_id) FROM watches;
+SELECT AVG(watch_price) FROM watches;
+SELECT AVG(watch_dialstyle) FROM watches;
+SELECT AVG(watch_EMI) FROM watches;
+SELECT AVG(watch_model_size)  FROM watches;
+
+/*INSTR*/
+
+SELECT INSTR(watch_color,'b') from  watches;
+SELECT INSTR(watch_brandname,'t') from watches;
+SELECT INSTR(watch_display,'r') from watches;
+SELECT * FROM  watches;
+
+/*SUBSTR*/
+SELECT substr('XWORKZODC',4,3);
+SELECT substr('XWORKZODC',4,7);
+SELECT substr(watch_strapstyle,4,7) from watches;
+SELECT substr(watch_dial_material,2,7) from watches;
+SELECT substr(watch_movement_type,3,8) from  watches;
+
+
+
+
+
