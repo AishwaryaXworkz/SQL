@@ -1,5 +1,5 @@
-CREATE DATABASE newstates;
-use newstates;
+CREATE DATABASE Indianstate;
+use Indianstate;
 
 CREATE TABLE st_information1(id int,st_name varchar(30),st_pincode int ,st_population bigint,st_capital varchar(30),st_rivers varchar(30),st_economy varchar(30),no_of_dist varchar(30),dist_name varchar(30),lok_sabha_constituencies int,st_areas bigint,pre_cap_income bigint,st_forest varchar(30),st_argicultural_area varchar(30),st_cm_name varchar(30));
 select * from st_information1;
@@ -26,58 +26,53 @@ INSERT INTO st_information1 VALUES(19,'odisha',560077,1900000,'Bhubaneshwar','Sa
 INSERT INTO st_information1 VALUES(20,'TamilNadu',560088,2500000,'Chennai','kalinadi','seventyfive hundred crore','twohundred','uttara kannada',20,2000,1600000,'BM kaval aagara forest','11500sqkm','mamata banerjee');
 select * from st_information1;
 
+/*like*/
+SELECT * FROM st_information1 WHERE st_name LIKE 'M%';
+SELECT * FROM st_information1 WHERE st_rivers LIKE '%A';
+SELECT * FROM st_information1 WHERE st_capital LIKE 'H%%d'; 
 
-/*order by*/
-SELECT * from st_information1 ORDER BY id=1;
-SELECT * from st_information1 ORDER BY  id desc;
+/*not like*/
+SELECT * FROM st_information1 WHERE st_name NOT LIKE 'M%';
+SELECT * FROM st_information1 WHERE st_rivers NOT LIKE '%A';
+SELECT * FROM st_information1 WHERE st_capital NOT LIKE 'H%%d'; 
 
-/*distinct*/
-SELECT distinct(st_capital)from st_information1;
+/*LOWER*/
+SELECT LOWER(dist_name) from st_information1;
+SELECT LOWER(st_name) from st_information1;
+SELECT LOWER(st_forest) from st_information1;
 
-/*Aggergate functions*/
-SELECT COUNT(*) FROM st_information1;
-SELECT COUNT(st_population) FROM st_information1;
-SELECT COUNT(dist_name) FROM st_information1;
-SELECT COUNT(lok_sabha_constituencies) FROM st_information1;
-SELECT COUNT(st_areas)  FROM st_information1;
+/*UPPER*/
+SELECT UPPER(dist_name) from st_information1;
+SELECT UPPER(st_name) from st_information1;
+SELECT UPPER(st_forest) from st_information1;
+select * from st_information1;
 
-SELECT SUM(st_population) FROM st_information1;
-SELECT SUM(pre_cap_income) FROM st_information1;
-SELECT SUM(lok_sabha_constituencies) FROM st_information1;
-SELECT SUM(st_areas) FROM st_information1;
-SELECT SUM(st_pincode) FROM st_information1;
+/*CONCAT*/
+SELECT CONCAT(st_cm_name,st_name) from st_information1;
+SELECT CONCAT(st_population,dist_name) from st_information1;
+SELECT CONCAT(st_rivers,st_pincode) from st_information1;
 
-SELECT MAX(st_population) FROM st_information1;
-SELECT MAX(pre_cap_income) FROM st_information1;
-SELECT MAX(lok_sabha_constituencies) FROM st_information1;
-SELECT MAX(st_areas) FROM st_information1;
-SELECT MAX(st_pincode) FROM st_information1;
+/*LENGTH*/
+SELECT LENGTH(st_name) from st_information1;
+SELECT LENGTH(dist_name) from st_information1;
+SELECT LENGTH(st_economy) from st_information1;
 
-SELECT MIN(st_population) FROM st_information1;
-SELECT MIN(pre_cap_income) FROM st_information1;
-SELECT MIN(lok_sabha_constituencies) FROM st_information1;
-SELECT MIN(st_areas) FROM st_information1;
-SELECT MIN(st_pincode) FROM st_information1;
+/*LTRIM-left remove*/
+SELECT LTRIM(st_name) FROM st_information1;
+SELECT LTRIM(st_economy) FROM st_information1;
+SELECT LTRIM(dist_name) FROM st_information1;
 
+/*RTRIM-right remove*/
+SELECT RTRIM(st_name) FROM st_information1;
+SELECT RTRIM(st_economy) FROM st_information1;
+SELECT RTRIM(dist_name) FROM st_information1;
 
-SELECT AVG(st_population) FROM st_information1;
-SELECT AVG(pre_cap_income) FROM st_information1;
-SELECT AVG(lok_sabha_constituencies) FROM st_information1;
-SELECT AVG(st_areas) FROM st_information1;
-SELECT AVG(st_pincode) FROM st_information1;
+/*LPAD*/
+SELECT LPAD ('Karnataka',11,'A');
+SELECT LPAD ('bengaluru',15,'A');
+SELECT LPAD ('festival',20,'A');
 
-
-
-/*INSTR*/
-SELECT INSTR('XWORKZ','K');
-SELECT INSTR(st_name,'A') from  st_information1;
-SELECT INSTR(st_capital,'S') from  st_information1;
-SELECT INSTR(st_rivers,'G') from  st_information1;
-SELECT * FROM  st_information1;
-
-/*SUBSTR*/
-SELECT substr('XWORKZODC',4,3);
-SELECT substr('XWORKZODC',4,7);
-SELECT substr(st_name,4,7) from st_information1;
-SELECT substr(st_capital,2,7) from st_information1;
-SELECT substr(st_rivers,3,8) from  st_information1;
+/*RPAD*/
+SELECT RPAD ('Karnataka',11,'A');
+SELECT RPAD ('bengaluru',15,'A');
+SELECT RPAD ('festival',20,'A');
