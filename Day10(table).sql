@@ -43,3 +43,19 @@ INSERT INTO Audience_info VALUES(8,'v ravichandran','Male',8197714173,80,88689,2
 INSERT INTO Audience_info VALUES(9,'arjun sarja','Female',7349466841,90,96886,29,'arjunsarja@gmail.com');
 INSERT INTO Audience_info VALUES(10,'venkatesh','Tg',9036830594,100,96985,30,'venkatesh@gmail.com');
 
+/*inner join*/
+SELECT * FROM Theatre_info as T inner join Movies_info as M on T.t_id = M.theatre_id;
+
+/*left join*/
+SELECT * FROM Theatre_info as T Left join Movies_info as M on T.t_id = M.theatre_id;
+
+/*right join*/
+SELECT * FROM Theatre_info as T right join Movies_info as M on T.t_id = M.theatre_id;
+
+/*cross join*/
+SELECT * FROM Theatre_info, Movies_info;
+
+
+
+
+
